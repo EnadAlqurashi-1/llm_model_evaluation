@@ -140,8 +140,10 @@ def eval(args, subject, model, tokenizer, dev_df, test_df):
 
         label = test_df.iloc[i, test_df.shape[1] - 1]
 
-        logits = model(input_ids=input_ids).logits[0, -1]
-
+        # Ensure compatibility with latest transformers library
+        outputs = model(input_ids=input_ids, return_dict=True)
+        logits = outputs.logits[0,-1]
+                                
         probs = (
             torch.nn.functional.softmax(
                 torch.tensor(
