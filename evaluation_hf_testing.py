@@ -204,7 +204,7 @@ def main(args):
             os.path.join(args.data_dir, "dev", subject + "_dev.csv"), header=None
         )[: args.ntrain]
         test_df = pd.read_csv(
-            os.path.join(args.data_dir, "test", subject + "_test.csv"), header=None
+            os.path.join(args.data_dir, "val", subject + "_val.csv"), header=None
         )
 
         # Evaluate the model on the current subject's data
